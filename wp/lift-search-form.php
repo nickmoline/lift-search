@@ -53,14 +53,14 @@ if ( !class_exists( 'Lift_Search_Form' ) ) {
 		 */
 		private function __construct($wp_query) {
 			$this->lift_query = Lift_WP_Query::GetInstance($wp_query);
-			$this->additional_fields();
+			$this->add_filters();
 		}
 
 		/**
 		 * Calls all of the default search field build methods, Not including the main search term field.
 		 * Fields can be modified using the 'lift_filters_default_fields' filter.
 		 */
-		public function additional_fields() {
+		public function add_filters() {
 			if ( $this->lift_query->wp_query->is_search() ) {
 				$fields = array( 'date', 'post_type', 'post_categories', 'post_tags', 'orderby' );
 			} else {
